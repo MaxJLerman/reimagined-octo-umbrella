@@ -10,9 +10,7 @@ const Category = () => {
 
   const category = CATEGORIES.find((category) => category.slug === slug);
 
-  if (!category) {
-    return <Redirect href={"/404"} />;
-  }
+  if (!category) return <Redirect href={"/404"} />;
 
   const products = PRODUCTS.filter((product) => product.category.slug === slug);
 
