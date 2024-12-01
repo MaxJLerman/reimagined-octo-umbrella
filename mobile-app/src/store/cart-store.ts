@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { PRODUCTS } from "../core/products";
 
-type CartItem = {
+export type CartItemType = {
   id: number;
   title: string;
   image: any;
@@ -10,8 +10,8 @@ type CartItem = {
 };
 
 type CartState = {
-  items: CartItem[];
-  addItem: (item: CartItem) => void;
+  items: CartItemType[];
+  addItem: (item: CartItemType) => void;
   removeItem: (id: number) => void;
   incrementItem: (id: number) => void;
   decrementItem: (id: number) => void;
@@ -19,11 +19,11 @@ type CartState = {
   getItemCount: () => number;
 };
 
-const initialCartItems: CartItem[] = [];
+const initialCartItems: CartItemType[] = [];
 
 export const useCartStore = create<CartState>((set, get) => ({
   items: initialCartItems,
-  addItem: (item: CartItem) => {
+  addItem: (item: CartItemType) => {
     const existingItem = get().items.find(
       (itemToFind) => itemToFind.id === item.id,
     );
